@@ -1,5 +1,8 @@
+import asyncio
+
 from loguru import logger as log
 
+from .server import build_app, run_server
 from .settings import Config
 
 
@@ -20,6 +23,10 @@ def run():
     try:
         log.debug(('='*25) + 'Lover\'s Movie Checker v' + ".".join(str(x) for x in __version__) + ('='*25))
         # Здесь можно запускать приложение
+        asyncio.run(run_server(build_app()))
         
     except KeyboardInterrupt:
-        print('Штатное завершение программы...')
+        log.debug('Штатное завершение программы...')
+        return
+    except Exception as e:
+        log.error(f'Приложение завершилось с ошибкой ({e.__class__.__name__}) : {str(e)}')
