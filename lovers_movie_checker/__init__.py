@@ -1,9 +1,25 @@
+from loguru import logger as log
 
+from .settings import Config
+
+
+log.remove(0)
+log.add(
+    '.\log\{time:DD-MM-YYYY}.log', 
+    format='{time:HH:mm:ss.SSSZ} | [{level}] | {name}:{function}({line}) | {message}', 
+    rotation="00:01", 
+    retention="7 days", 
+    compression="zip"
+)
+
+
+cfg = Config()
 __version__ = (1, 0, 0, 0)
 
 def run():
     try:
-        print(('='*25) + 'Lover\'s Movie Checker v' + ".".join(str(x) for x in __version__) + ('='*25))
+        log.debug(('='*25) + 'Lover\'s Movie Checker v' + ".".join(str(x) for x in __version__) + ('='*25))
+        # Здесь можно запускать приложение
         
     except KeyboardInterrupt:
         print('Штатное завершение программы...')
