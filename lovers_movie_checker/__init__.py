@@ -4,6 +4,7 @@ from loguru import logger as log
 
 from .server import build_app, run_server
 from .settings import Config
+from . import db
 
 
 log.remove(0)

@@ -1,4 +1,8 @@
+.vscode
+__pycache__
+log
 *.log
-*.sqlite3
+*.db
 *.yaml
+*.env
 venv

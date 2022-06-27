@@ -11,4 +11,4 @@ class Config(ConfigRoot):
 class DevConfig(ConfigRoot):
     __io_class__ = YAMLFileConfigIO('dev.env')
 
-    in_dev = BoolField(label='In Development', default=False)
+    is_dev = BoolField(label='In Development', default=False)
